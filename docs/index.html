@@ -50,17 +50,40 @@
             const isAndroid = /Android/.test(navigator.userAgent);
 
             if (isIOS || isAndroid) {
+                let storeTimeout;
+                let appOpened = false;
+
+                // 앱이 열렸는지 감지하는 이벤트 리스너
+                const detectAppOpen = () => {
+                    appOpened = true;
+                    if (storeTimeout) {
+                        clearTimeout(storeTimeout);
+                    }
+                };
+
+                // 페이지가 숨겨지거나 포커스를 잃으면 앱이 열린 것으로 간주
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        detectAppOpen();
+                    }
+                });
+
+                window.addEventListener('blur', detectAppOpen);
+                window.addEventListener('pagehide', detectAppOpen);
+
                 // 즉시 앱 실행 시도
                 window.location.href = 'uniedu://home';
 
-                // 앱이 설치되지 않은 경우 스토어로 리다이렉트
-                setTimeout(() => {
-                    if (isIOS) {
-                        window.location.href = 'https://apps.apple.com/app/your-app-id';
-                    } else if (isAndroid) {
-                        window.location.href = 'https://play.google.com/store/apps/details?id=com.example.uni_edu';
+                // 앱이 설치되지 않은 경우를 대비해 스토어로 리다이렉트 (2초 후)
+                storeTimeout = setTimeout(() => {
+                    if (!appOpened) {
+                        if (isIOS) {
+                            window.location.href = 'https://apps.apple.com/app/your-app-id';
+                        } else if (isAndroid) {
+                            window.location.href = 'https://play.google.com/store/apps/details?id=com.example.uni_edu';
+                        }
                     }
-                }, 1000);
+                }, 2000);
             }
         }
 
