@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAM_ID.com.example.uni_edu",
+        "paths": [
+          "/home",
+          "/edu-schedule",
+          "/edu-schedule/detail",
+          "/safety-edu",
+          "/safety-edu/detail",
+          "/notice",
+          "/notice/detail",
+          "/facilities/future",
+          "/facilities/jmd",
+          "/my-profile",
+          "*"
+        ]
+      }
+    ]
+  }
+}
