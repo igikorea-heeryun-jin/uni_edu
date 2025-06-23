@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uni Edu - 딥링크 테스트</title>
+    <title>Uni Edu</title>
     <style>
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -34,106 +34,41 @@
             margin-bottom: 20px;
             font-weight: 700;
         }
-
-        .test-links {
-            display: grid;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .test-link {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .test-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .test-link h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.2em;
-        }
-
-        .test-link p {
-            margin: 0;
-            opacity: 0.8;
-            font-size: 0.9em;
-        }
-
-        .github-info {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            font-size: 0.9em;
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1>🎓 Uni Edu</h1>
-        <p>딥링크 테스트 페이지</p>
-
-        <div class="test-links">
-            <a href="deep_link.html?path=/home&auto=true" class="test-link">
-                <h3>🏠 홈 화면</h3>
-                <p>앱의 홈 화면으로 이동</p>
-            </a>
-
-            <a href="deep_link.html?path=/edu-schedule&auto=true" class="test-link">
-                <h3>📅 교육 일정</h3>
-                <p>교육 일정 페이지로 이동</p>
-            </a>
-
-            <a href="deep_link.html?path=/edu-schedule/detail&id=123&auto=true" class="test-link">
-                <h3>📋 교육 일정 상세</h3>
-                <p>특정 교육 일정 상세 페이지 (ID: 123)</p>
-            </a>
-
-            <a href="deep_link.html?path=/safety-edu&auto=true" class="test-link">
-                <h3>🛡️ 안전교육</h3>
-                <p>안전교육 목록 페이지로 이동</p>
-            </a>
-
-            <a href="deep_link.html?path=/safety-edu/detail&id=456&auto=true" class="test-link">
-                <h3>📖 안전교육 상세</h3>
-                <p>특정 안전교육 상세 페이지 (ID: 456)</p>
-            </a>
-
-            <a href="deep_link.html?path=/notice&auto=true" class="test-link">
-                <h3>📢 공지사항</h3>
-                <p>공지사항 목록 페이지로 이동</p>
-            </a>
-
-            <a href="deep_link.html?path=/facilities/future&auto=true" class="test-link">
-                <h3>🏢 Future 시설</h3>
-                <p>Future 캠퍼스 시설 안내</p>
-            </a>
-
-            <a href="deep_link.html?path=/my-profile&auto=true" class="test-link">
-                <h3>👤 내 프로필</h3>
-                <p>사용자 프로필 페이지로 이동</p>
-            </a>
-        </div>
-
-        <div class="github-info">
-            <h3>🔗 직접 딥링크 테스트</h3>
-            <p><strong>Custom URL Scheme:</strong></p>
-            <p><code>uniedu://home</code></p>
-            <p><code>uniedu://edu-schedule/detail?id=123</code></p>
-
-            <p style="margin-top: 15px;"><strong>Universal/App Links:</strong></p>
-            <p><code>https://[your-username].github.io/uni_edu/home</code></p>
-        </div>
+        <p>앱을 실행하거나 스토어에서 다운로드하세요</p>
     </div>
+
+    <script>
+        // 앱 실행 또는 스토어 연결 함수
+        function openAppOrStore() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isAndroid = /Android/.test(navigator.userAgent);
+
+            if (isIOS || isAndroid) {
+                // 즉시 앱 실행 시도
+                window.location.href = 'uniedu://home';
+
+                // 앱이 설치되지 않은 경우 스토어로 리다이렉트
+                setTimeout(() => {
+                    if (isIOS) {
+                        window.location.href = 'https://apps.apple.com/app/your-app-id';
+                    } else if (isAndroid) {
+                        window.location.href = 'https://play.google.com/store/apps/details?id=com.example.uni_edu';
+                    }
+                }, 1000);
+            }
+        }
+
+        // 페이지 로드 시 앱 실행 시도 (모바일에서만)
+        if (navigator.userAgent.includes('Mobile')) {
+            openAppOrStore();
+        }
+    </script>
 </body>
 
 </html>
