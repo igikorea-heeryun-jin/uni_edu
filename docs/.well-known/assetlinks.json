@@ -3,8 +3,10 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.example.uni_edu",
-      "sha256_cert_fingerprints": ["YOUR_APP_SHA256_FINGERPRINT_HERE"]
+      "package_name": "com.igikorea.uni_edu",
+      "sha256_cert_fingerprints": [
+        "6C:EF:CB:99:A4:FD:FD:E8:5C:0D:6A:17:F3:B4:4C:21:C4:EF:83:F9:F7:B1:AB:B9:42:06:FB:E7:B5:00:51:E0"
+      ]
     }
   }
 ]

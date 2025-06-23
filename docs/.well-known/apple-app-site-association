@@ -3,19 +3,9 @@
     "apps": [],
     "details": [
       {
-        "appID": "T6FAJH5DF8.com.example.uni_edu",
+        "appID": "T6FAJH5DF8.com.igikorea.uniEdu",
         "paths": [
-          "/home",
-          "/edu-schedule",
-          "/edu-schedule/detail",
-          "/safety-edu",
-          "/safety-edu/detail",
-          "/notice",
-          "/notice/detail",
-          "/facilities/future",
-          "/facilities/jmd",
-          "/my-profile",
-          "*"
+          "/splash"
         ]
       }
     ]
