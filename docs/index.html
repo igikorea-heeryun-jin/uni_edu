@@ -4,42 +4,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>통일교육원 모바일</title>
+    <title>유니버스 설치 페이지</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: white;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
+            margin: 0 auto;
+            position: relative;
+            padding: 0;
+            max-width: 500px;
         }
 
         .container {
             text-align: center;
-            max-width: 600px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            position: absolute;
+            top: 16.5vh;
+            left: 0;
+            right: 0;
+            padding: 0 20px;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+        .app-icon {
+            width: clamp(100px, 30vw, 120px);
+            height: clamp(100px, 30vw, 120px);
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-icon-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .app-title {
+            font-size: clamp(18px, 5.5vw, 22px);
             font-weight: 700;
+            color: #212529;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .app-description {
+            color: #94A1B7;
+            font-size: clamp(13px, 3.8vw, 15px);
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .app-subtitle {
+            color: #94A1B7;
+            font-size: clamp(13px, 3.8vw, 15px);
+            line-height: 1.5;
+            margin-bottom: clamp(60px, 9.5vh, 80px);
+        }
+
+        .launch-button {
+            background: linear-gradient(135deg, #4fc3f7 0%, #258ADA 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: clamp(14px, 4vw, 16px) clamp(32px, 10vw, 40px);
+            font-size: clamp(16px, 4.5vw, 18px);
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            max-width: clamp(280px, 76vw, 300px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(79, 195, 247, 0.3);
+        }
+
+        .launch-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(79, 195, 247, 0.4);
+        }
+
+        .launch-button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: clamp(50px, 8.8vh, 75px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .footer-logo img {
+            width: clamp(120px, 38vw, 150.75px);
+            height: clamp(28px, 9vw, 36px);
+            object-fit: contain;
+        }
+
+        @media (max-width: 375px) {
+            .container {
+                top: 15vh;
+                padding: 0 15px;
+            }
+
+            .app-subtitle {
+                margin-bottom: clamp(50px, 8vh, 70px);
+            }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                max-width: 400px;
+            }
+
+            .container {
+                top: 17vh;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .container {
+                top: 10vh;
+            }
+
+            .app-subtitle {
+                margin-bottom: clamp(30px, 6vh, 50px);
+            }
+
+            .footer {
+                bottom: clamp(30px, 5vh, 40px);
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>🎓 통일교육원 모바일</h1>
+        <!-- 앱 아이콘 -->
+        <div class="app-icon">
+            <img src="web_asset/app_icon.png" alt="유니버스 로고" class="app-icon-logo">
+        </div>
+
+        <!-- 앱 제목 -->
+        <h1 class="app-title">유니버스</h1>
+
+        <!-- 앱 설명 -->
+        <p class="app-description">본 서비스를 이용하시려면 앱 실행이 필요합니다.</p>
+        <p class="app-subtitle">설치되어 있지 않은 경우, 앱스토어로 이동합니다.</p>
+
+        <!-- 실행 버튼 -->
+        <button class="launch-button" onclick="openAppOrStore()">실행</button>
+    </div>
+
+    <!-- 하단 로고 -->
+    <div class="footer">
+        <div class="footer-logo">
+            <img src="web_asset/logo.png" alt="통일부 로고" />
+        </div>
     </div>
 
     <script>
@@ -77,9 +206,9 @@
                 storeTimeout = setTimeout(() => {
                     if (!appOpened) {
                         if (isIOS) {
-                            window.location.href = 'https://apps.apple.com/app/your-app-id';
+                            window.location.href = 'https://apps.apple.com/us/app/ontwins/id6504219595?l=ko';
                         } else if (isAndroid) {
-                            window.location.href = 'https://play.google.com/store/apps/details?id=com.example.uni_edu';
+                            window.location.href = 'https://play.google.com/store/apps/details?id=com.igikorea.solutionmobile&hl=ko';
                         }
                     }
                 }, 2000);
@@ -88,7 +217,8 @@
 
         // 페이지 로드 시 앱 실행 시도 (모바일에서만)
         if (navigator.userAgent.includes('Mobile')) {
-            openAppOrStore();
+            // 자동 실행하지 않고 사용자 액션을 기다림
+            // openAppOrStore();
         }
     </script>
 </body>
